@@ -1,5 +1,6 @@
 import os, sys
 import logging
+import numpy as np
 import torch
 import torch.optim as optim
 import torch.nn.functional as F
@@ -124,7 +125,7 @@ def evaluation(cfg):
         mean_l2_diff = torch.cat(l2_diffs).mean()
         mean_prop_wrong = torch.cat(prop_wrongs).mean()
         mean_prop_any_wrong = torch.cat(prop_any_wrongs).mean()
-        mean_kendall_tau = torch.cat(kendall_taus).mean()
+        mean_kendall_tau = np.concatenate(kendall_taus).mean()
         logger.info("\nmean l1 diff : %f\n mean l2 diff : %f\n mean prop wrong : %f\n mean prop any wrong : %f\n mean kendall tau : %f",
             mean_l1_diff, mean_l2_diff, mean_prop_wrong, mean_prop_any_wrong, mean_kendall_tau
         )
